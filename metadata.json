@@ -1,0 +1,6 @@
+{
+  "name": "Geovana Maestri — Biosite & Estética",
+  "description": "Biosite elegante e feminino para Geovana Maestri, especialista em cílios, sobrancelhas e cursos com agendamento e personalização.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
