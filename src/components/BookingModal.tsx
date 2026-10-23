@@ -42,31 +42,33 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs transition-opacity animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs transition-opacity animate-fade-in">
       <div
-        className="relative w-full max-w-lg overflow-hidden bg-white rounded-3xl shadow-2xl border border-rose-100"
-        style={{ maxHeight: '90vh' }}
+        className="relative w-full max-w-lg overflow-hidden bg-white rounded-3xl shadow-2xl border border-rose-100 flex flex-col my-auto"
+        style={{ maxHeight: '92vh' }}
       >
         {/* Header */}
         <div
-          className="px-6 py-5 text-white flex items-center justify-between"
+          className="px-5 sm:px-6 py-4 sm:py-5 text-white flex items-center justify-between shrink-0"
           style={{ backgroundColor: accentColor }}
         >
           <div>
-            <span className="text-xs uppercase tracking-widest opacity-90 font-sans">Agendamento Online</span>
-            <h3 className="text-2xl font-serif font-medium">Reserve seu Horário</h3>
+            <span className="text-[10px] sm:text-xs uppercase tracking-widest opacity-90 font-sans block">
+              Agendamento Online
+            </span>
+            <h3 className="text-xl sm:text-2xl font-serif font-medium">Reserve seu Horário</h3>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-white/20 transition-colors text-white"
-            aria-label="Fechar"
+            className="w-11 h-11 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label="Fechar modal de agendamento"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 80px)' }}>
+        <div className="p-5 sm:p-6 overflow-y-auto overscroll-contain space-y-4">
           {isSuccess ? (
             <div className="text-center py-8 space-y-4">
               <div
@@ -76,7 +78,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h4 className="text-2xl font-serif text-slate-800">Solicitação Enviada!</h4>
-              <p className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
                 Você foi redirecionada para o WhatsApp de {professionalName}. Ela responderá confirmando seu
                 atendimento exclusivo.
               </p>
@@ -85,7 +87,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   setIsSuccess(false);
                   onClose();
                 }}
-                className="mt-4 px-6 py-2.5 rounded-full text-sm font-medium text-white transition-all shadow-md hover:shadow-lg"
+                className="mt-4 px-6 py-3 min-h-[44px] rounded-full text-xs sm:text-sm font-semibold text-white transition-all shadow-md hover:shadow-lg active:scale-95"
                 style={{ backgroundColor: accentColor }}
               >
                 Concluir
@@ -100,7 +102,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <select
                   value={selectedService}
                   onChange={(e) => setSelectedService(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/40 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
+                  className="w-full px-3.5 sm:px-4 py-3 min-h-[44px] rounded-xl border border-rose-200 bg-rose-50/40 text-slate-800 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
                   required
                 >
                   {services.map((s) => (
@@ -112,7 +114,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center gap-1.5">
                     <User className="w-3.5 h-3.5 text-rose-400" /> Seu Nome
@@ -122,7 +124,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
                     placeholder="Como prefere ser chamada?"
-                    className="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 min-h-[44px] rounded-xl border border-rose-200 text-slate-800 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
                     required
                   />
                 </div>
@@ -136,12 +138,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     value={clientPhone}
                     onChange={(e) => setClientPhone(e.target.value)}
                     placeholder="(00) 00000-0000"
-                    className="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 min-h-[44px] rounded-xl border border-rose-200 text-slate-800 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5 text-rose-400" /> Data Preferencial
@@ -150,7 +152,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     type="date"
                     value={preferredDate}
                     onChange={(e) => setPreferredDate(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 min-h-[44px] rounded-xl border border-rose-200 text-slate-800 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
                   />
                 </div>
 
@@ -161,7 +163,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <select
                     value={preferredShift}
                     onChange={(e) => setPreferredShift(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 min-h-[44px] rounded-xl border border-rose-200 text-slate-800 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
                   >
                     <option value="Manhã (09h às 12h)">Manhã (09h às 12h)</option>
                     <option value="Tarde (13h às 18h)">Tarde (13h às 18h)</option>

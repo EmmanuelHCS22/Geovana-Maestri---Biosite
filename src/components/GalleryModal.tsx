@@ -13,17 +13,17 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ item, onClose, accen
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative max-w-2xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-white/20"
+        className="relative max-w-lg md:max-w-xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-white/20 my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2.5 bg-black/40 hover:bg-black/60 rounded-full text-white backdrop-blur-md transition-colors"
-          aria-label="Fechar"
+          className="absolute top-3 right-3 z-10 w-11 h-11 bg-black/50 hover:bg-black/70 rounded-full text-white backdrop-blur-md flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          aria-label="Fechar galeria"
         >
           <X className="w-5 h-5" />
         </button>

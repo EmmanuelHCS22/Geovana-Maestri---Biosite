@@ -58,43 +58,43 @@ export const CatalogModal: React.FC<CatalogModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative max-w-lg w-full bg-white rounded-3xl shadow-2xl border border-rose-100 overflow-hidden flex flex-col"
-        style={{ maxHeight: '90vh' }}
+        className="relative max-w-lg w-full bg-white rounded-3xl shadow-2xl border border-rose-100 overflow-hidden flex flex-col my-auto"
+        style={{ maxHeight: '92vh' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div
-          className="px-6 py-5 text-white flex items-center justify-between"
+          className="px-5 sm:px-6 py-4 sm:py-5 text-white flex items-center justify-between shrink-0"
           style={{ backgroundColor: accentColor }}
         >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
               <BookOpen className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="text-[10px] uppercase tracking-widest text-white/80 font-semibold">
+              <span className="text-[10px] uppercase tracking-widest text-white/80 font-semibold block">
                 Menu & Serviços
               </span>
-              <h3 className="text-xl font-serif font-medium">Catálogo de Procedimentos</h3>
+              <h3 className="text-lg sm:text-xl font-serif font-medium">Catálogo de Procedimentos</h3>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-white/20 transition-colors text-white"
-            aria-label="Fechar"
+            className="w-11 h-11 rounded-full hover:bg-white/20 transition-colors text-white flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0"
+            aria-label="Fechar catálogo"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Content list */}
-        <div className="p-6 overflow-y-auto space-y-3.5">
-          <p className="text-xs text-slate-600 leading-relaxed">
+        <div className="p-4 sm:p-6 overflow-y-auto overscroll-contain space-y-3.5">
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
             Consulte nossa seleção de técnicas exclusivas de {professionalName}. Todos os atendimentos
             incluem avaliação prévia e produtos de alta tecnologia.
           </p>
@@ -103,10 +103,10 @@ export const CatalogModal: React.FC<CatalogModalProps> = ({
             {catalogItems.map((item, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-2xl bg-rose-50/30 border border-rose-100 hover:border-rose-200 transition-all space-y-2"
+                className="p-3.5 sm:p-4 rounded-2xl bg-rose-50/30 border border-rose-100 hover:border-rose-200 transition-all space-y-2"
               >
                 <div className="flex items-start justify-between gap-2">
-                  <h4 className="font-serif text-base font-semibold text-slate-800">{item.title}</h4>
+                  <h4 className="font-serif text-sm sm:text-base font-semibold text-slate-800">{item.title}</h4>
                   <span
                     className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0"
                     style={{ backgroundColor: `${accentColor}20`, color: accentColor }}
@@ -115,9 +115,9 @@ export const CatalogModal: React.FC<CatalogModalProps> = ({
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed font-sans">{item.description}</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">{item.description}</p>
 
-                <div className="flex items-center justify-between pt-1 border-t border-rose-100/60 text-[11px] text-slate-500">
+                <div className="flex items-center justify-between pt-1 border-t border-rose-100/60 text-[11px] sm:text-xs text-slate-500 gap-2">
                   <span className="flex items-center gap-1 font-medium">
                     <Clock className="w-3.5 h-3.5 text-rose-400" /> {item.duration}
                   </span>
@@ -127,7 +127,7 @@ export const CatalogModal: React.FC<CatalogModalProps> = ({
                       onClose();
                       onSelectBooking(item.title);
                     }}
-                    className="px-3 py-1 rounded-xl text-xs font-semibold text-white shadow-xs hover:shadow-sm transition active:scale-95 flex items-center gap-1"
+                    className="px-3.5 py-2 min-h-[38px] rounded-xl text-xs font-semibold text-white shadow-xs hover:shadow-sm transition active:scale-95 flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                     style={{ backgroundColor: accentColor }}
                   >
                     Agendar Horário

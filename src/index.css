@@ -7,12 +7,21 @@
     --text-color: #2b2728;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: var(--text-color);
     background-color: var(--bg-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    min-width: 320px;
+    touch-action: manipulation;
   }
 }
 
@@ -47,4 +56,16 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(215, 128, 150, 0.6);
+}
+
+/* Prevent text cutoffs & orphans */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* Safe areas */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: max(1.5rem, calc(env(safe-area-inset-bottom) + 1rem));
+  }
 }

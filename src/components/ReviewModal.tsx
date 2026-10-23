@@ -37,16 +37,16 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative max-w-md w-full bg-white rounded-3xl p-6 shadow-2xl border border-rose-100 overflow-hidden"
+        className="relative max-w-md w-full bg-white rounded-3xl p-5 sm:p-6 shadow-2xl border border-rose-100 overflow-hidden my-auto max-h-[92vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-500"
+          className="absolute top-3.5 right-3.5 w-11 h-11 rounded-full hover:bg-slate-100 transition-colors text-slate-500 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
           aria-label="Fechar"
         >
           <X className="w-5 h-5" />
@@ -61,7 +61,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
               <CheckCircle2 className="w-10 h-10" />
             </div>
             <h3 className="text-2xl font-serif text-slate-800">Muito Obrigada!</h3>
-            <p className="text-sm text-slate-600 leading-relaxed max-w-xs mx-auto">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xs mx-auto">
               Sua avaliação foi enviada com sucesso. Seu carinho e feedback nos motivam a evoluir a cada dia.
             </p>
             <button
@@ -69,7 +69,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
                 setSubmitted(false);
                 onClose();
               }}
-              className="mt-4 px-6 py-2.5 rounded-full text-xs font-semibold text-white shadow-md hover:shadow-lg transition-all"
+              className="mt-4 px-6 py-2.5 min-h-[44px] rounded-full text-xs sm:text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all"
               style={{ backgroundColor: accentColor }}
             >
               Fechar
@@ -84,14 +84,14 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
               >
                 <Heart className="w-6 h-6 fill-current" />
               </div>
-              <h3 className="text-2xl font-serif text-slate-800">Avalie sua Experiência</h3>
+              <h3 className="text-xl sm:text-2xl font-serif text-slate-800">Avalie sua Experiência</h3>
               <p className="text-xs text-slate-600">
                 Como foi seu momento com {professionalName}?
               </p>
             </div>
 
             {/* Stars Selector */}
-            <div className="flex items-center justify-center gap-2 py-2">
+            <div className="flex items-center justify-center gap-1.5 xs:gap-2 py-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
@@ -99,10 +99,11 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
                   onClick={() => setRating(star)}
                   onMouseEnter={() => setHoverRating(star)}
                   onMouseLeave={() => setHoverRating(0)}
-                  className="p-1 transition-transform hover:scale-120 active:scale-95"
+                  className="p-1.5 transition-transform hover:scale-120 active:scale-95 min-w-[40px] min-h-[40px] flex items-center justify-center"
+                  aria-label={`${star} estrelas`}
                 >
                   <Star
-                    className={`w-8 h-8 transition-colors ${
+                    className={`w-7 h-7 sm:w-8 sm:h-8 transition-colors ${
                       (hoverRating || rating) >= star
                         ? 'text-amber-400 fill-amber-400'
                         : 'text-slate-200'
@@ -121,7 +122,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
                 placeholder="Como prefere ser identificada?"
-                className="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
+                className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 min-h-[44px] rounded-xl border border-rose-200 text-slate-800 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
                 required
               />
             </div>
@@ -135,7 +136,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
                 placeholder="Conte como foi seu resultado, o ambiente, o carinho no atendimento..."
-                className="w-full px-4 py-2 text-slate-800 text-sm rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-300 transition resize-none"
+                className="w-full px-3.5 sm:px-4 py-2.5 text-slate-800 text-base sm:text-sm rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-300 transition resize-none"
                 required
               />
             </div>
@@ -143,7 +144,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3 px-6 rounded-2xl text-white font-medium text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-transform active:scale-98"
+                className="w-full py-3.5 px-6 min-h-[48px] rounded-2xl text-white font-medium text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-transform active:scale-98"
                 style={{ backgroundColor: accentColor }}
               >
                 <Send className="w-4 h-4" />
