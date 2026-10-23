@@ -33,7 +33,7 @@ export interface FaqItem {
 export interface SocialLinks {
   instagram: string;
   whatsapp: string;
-  pinterest: string;
+  pinterest?: string;
 }
 
 export interface BiositeData {

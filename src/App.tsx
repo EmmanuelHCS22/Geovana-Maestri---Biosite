@@ -4,11 +4,7 @@ import {
   ChevronDown,
   MessageCircle,
   Instagram,
-  Share2,
-  Sliders,
   Sparkles,
-  Smartphone,
-  Monitor,
   Heart,
   Calendar,
   Star,
@@ -20,8 +16,6 @@ import { DEFAULT_BIOSITE_DATA } from './defaultData';
 import { DynamicIcon } from './components/DynamicIcon';
 import { BookingModal } from './components/BookingModal';
 import { GalleryModal } from './components/GalleryModal';
-import { EditDrawer } from './components/EditDrawer';
-import { ShareModal } from './components/ShareModal';
 import { CatalogModal } from './components/CatalogModal';
 import { ReviewModal } from './components/ReviewModal';
 
@@ -41,33 +35,11 @@ export default function App() {
   });
 
   // Modals state
-  const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isReviewOpen, setIsReviewOpen] = useState(false);
-  const [isShareOpen, setIsShareOpen] = useState(false);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
   const [activeFaqId, setActiveFaqId] = useState<string | null>(data.faqs[0]?.id || null);
-  const [viewMode, setViewMode] = useState<'mobile' | 'expanded'>('mobile');
-
-  // Save to localStorage
-  const handleSaveData = (newData: BiositeData) => {
-    setData(newData);
-    try {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newData));
-    } catch (e) {
-      console.error('Failed to save to localStorage', e);
-    }
-  };
-
-  const handleResetData = () => {
-    setData(DEFAULT_BIOSITE_DATA);
-    try {
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
-    } catch (e) {
-      console.error('Failed to clear localStorage', e);
-    }
-  };
 
   // Toggle FAQ accordion
   const toggleFaq = (id: string) => {
@@ -136,79 +108,10 @@ export default function App() {
         />
       )}
 
-      {/* Top Floating Control Bar */}
-      <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 border-b border-rose-100/70 shadow-xs px-4 py-2.5">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span
-              className="w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: data.accentColor }}
-            />
-            <span className="font-serif font-semibold text-sm tracking-wide text-slate-800">
-              {data.firstName} {data.lastName}
-            </span>
-            <span className="hidden sm:inline-block text-xs text-slate-600">· Biosite Oficial</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {/* View switcher (mobile frame vs expanded) */}
-            <div className="hidden sm:flex items-center bg-rose-50/80 p-0.5 rounded-full border border-rose-100">
-              <button
-                onClick={() => setViewMode('mobile')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                  viewMode === 'mobile'
-                    ? 'bg-white shadow-xs text-slate-800 font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-                title="Modo Smartphone (Formato Bio do Instagram)"
-              >
-                <Smartphone className="w-3.5 h-3.5" />
-                Bio Mobile
-              </button>
-              <button
-                onClick={() => setViewMode('expanded')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                  viewMode === 'expanded'
-                    ? 'bg-white shadow-xs text-slate-800 font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-                title="Modo Expandido"
-              >
-                <Monitor className="w-3.5 h-3.5" />
-                Expandido
-              </button>
-            </div>
-
-            {/* Share button */}
-            <button
-              onClick={() => setIsShareOpen(true)}
-              className="p-2 rounded-full bg-white border border-rose-200 hover:bg-rose-50 text-slate-700 shadow-xs transition"
-              title="Compartilhar Link"
-            >
-              <Share2 className="w-4 h-4" />
-            </button>
-
-            {/* Edit Biosite button */}
-            <button
-              onClick={() => setIsEditorOpen(true)}
-              className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-white flex items-center gap-1.5 shadow-xs hover:shadow-md transition active:scale-95"
-              style={{ backgroundColor: data.accentColor }}
-            >
-              <Sliders className="w-3.5 h-3.5" />
-              <span>Editar Biosite</span>
-            </button>
-          </div>
-        </div>
-      </header>
-
       {/* Main Container Layout */}
-      <main className="py-4 sm:py-8 px-2 sm:px-4 flex justify-center">
+      <main className="min-h-screen p-0 sm:py-8 sm:px-4 flex justify-center">
         <div
-          className={`w-full transition-all duration-300 ${
-            viewMode === 'mobile'
-              ? 'max-w-md sm:rounded-[36px] sm:border sm:border-rose-200/80 sm:shadow-2xl overflow-hidden'
-              : 'max-w-2xl sm:rounded-[36px] sm:border sm:border-rose-200/80 sm:shadow-2xl overflow-hidden'
-          }`}
+          className="w-full max-w-md sm:rounded-[36px] sm:border sm:border-rose-200/80 sm:shadow-2xl overflow-hidden shadow-none"
           style={{ backgroundColor: data.bgColor }}
         >
           {/* ============================================================== */}
@@ -585,17 +488,6 @@ export default function App() {
                   </a>
                 )}
 
-                {data.socials.pinterest && (
-                  <a
-                    href={data.socials.pinterest}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-transform active:scale-95"
-                    title="Pinterest"
-                  >
-                    <Heart className="w-4 h-4" />
-                  </a>
-                )}
               </div>
 
               {/* Copyright */}
@@ -619,7 +511,7 @@ export default function App() {
         </button>
       </div>
 
-      {/* Modals & Drawers */}
+      {/* Modals */}
       <BookingModal
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
@@ -653,21 +545,6 @@ export default function App() {
         item={selectedGalleryItem}
         onClose={() => setSelectedGalleryItem(null)}
         accentColor={data.accentColor}
-      />
-
-      <EditDrawer
-        isOpen={isEditorOpen}
-        onClose={() => setIsEditorOpen(false)}
-        data={data}
-        onSave={handleSaveData}
-        onReset={handleResetData}
-      />
-
-      <ShareModal
-        isOpen={isShareOpen}
-        onClose={() => setIsShareOpen(false)}
-        accentColor={data.accentColor}
-        professionalName={`${data.firstName} ${data.lastName}`}
       />
     </div>
   );

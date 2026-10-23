@@ -154,7 +154,6 @@ export const DEFAULT_BIOSITE_DATA: BiositeData = {
   socials: {
     instagram: 'https://instagram.com/geovanamaestri',
     whatsapp: 'https://wa.me/5511999999999',
-    pinterest: 'https://pinterest.com/geovanamaestri',
   },
   copyright: '© 2026 Geovana Maestri. Todos os direitos reservados.',
 };
