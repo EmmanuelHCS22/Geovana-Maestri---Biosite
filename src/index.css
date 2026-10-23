@@ -69,3 +69,38 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: max(1.5rem, calc(env(safe-area-inset-bottom) + 1rem));
   }
 }
+
+/* Print / PDF Generation Styles */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #2b2728 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide floating buttons and presentation bars during print */
+  .no-print,
+  .fixed.bottom-\[max\(1rem\,env\(safe-area-inset-bottom\,1rem\)\)\],
+  .fixed.z-30 {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  main > div {
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
